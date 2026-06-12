@@ -38,11 +38,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'accounts',
     'doctors',
     'patients',
+    'hospitals',
     'appointments',
+    'prescriptions',
     'reports',
+    'notifications',
+    'emergency',
+    'diets',
+    'treatments',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
@@ -81,7 +89,7 @@ WSGI_APPLICATION = 'meditrack.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'meditrack_db',
+        'NAME': 'meditrack_db1',
         'USER':  'root',
         'PASSWORD': 'kalpana@123_',
         'HOST': 'localhost',
@@ -126,3 +134,26 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# Custom User Model
+AUTH_USER_MODEL = 'accounts.User'
+
+
+# Django REST Framework
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+
+    ),
+
+    'DEFAULT_PERMISSION_CLASSES': (
+
+        'rest_framework.permissions.IsAuthenticated',
+
+    )
+}

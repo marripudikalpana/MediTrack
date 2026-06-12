@@ -8,7 +8,7 @@ class Patient(models.Model):
 
     gender = models.CharField(max_length=20)
 
-    blood_group = models.CharField(max_length=5)
+    blood_group = models.CharField(max_length=10)
 
     phone = models.CharField(max_length=15)
 
